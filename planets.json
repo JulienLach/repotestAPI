@@ -1,0 +1,29 @@
+{
+  "planets": [
+    {
+      "name": "Mercure",
+      "diameter": 4879,
+      "distanceFromSun": 57910000
+    },
+    {
+      "name": "Vénus",
+      "diameter": 12104,
+      "distanceFromSun": 108200000
+    },
+    {
+      "name": "Terre",
+      "diameter": 12756,
+      "distanceFromSun": 149600000
+    },
+    {
+      "name": "Mars",
+      "diameter": 6792,
+      "distanceFromSun": 227940000
+    },
+    {
+      "name": "Jupiter",
+      "diameter": 142984,
+      "distanceFromSun": 778330000
+    }
+  ]
+}
