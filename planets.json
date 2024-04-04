@@ -16,7 +16,7 @@
       "distanceFromSun": 149600000
     },
     {
-      "name": "Mars",
+      "name": "Mars Updated",
       "diameter": 6792,
       "distanceFromSun": 227940000
     },
@@ -24,6 +24,21 @@
       "name": "Jupiter",
       "diameter": 142984,
       "distanceFromSun": 778330000
+    },
+    {
+      "name": "Saturne",
+      "diameter": 120536,
+      "distanceFromSun": 1429400000
+    },
+    {
+      "name": "Uranus",
+      "diameter": 51118,
+      "distanceFromSun": 2870990000
+    },
+    {
+      "name": "Neptune",
+      "diameter": 49528,
+      "distanceFromSun": 4504300000
     }
   ]
 }
