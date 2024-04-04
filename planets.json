@@ -39,6 +39,16 @@
       "name": "Neptune",
       "diameter": 49528,
       "distanceFromSun": 4504300000
+    },
+    {
+      "name": "Tatooine",
+      "diameter": "45433",
+      "distanceFromSun": "445534355334452"
+    },
+    {
+      "name": "Mustafar",
+      "diameter": "4453234",
+      "distanceFromSun": "22356543"
     }
   ]
 }

@@ -46,6 +46,57 @@ app.get("/api/planets/:name", (req, res) => {
   res.json(planet);
 });
 
+// Poster une nouvelle planète
+app.post("/api/planets", (req, res) => {
+  const planet = req.body;
+  if (!planet.name || !planet.diameter || !planet.distanceFromSun) {
+    return res.status(400).json({ message: "Erreur" });
+  }
+  planets.push(planet);
+  fs.writeFileSync(
+    // Écrire dans le fichier planets.json
+    "planets.json",
+    JSON.stringify({ planets: planets }, null, 2) // Formater le JSON pour qu'il soit plus lisible (2 espaces)
+  );
+  res.json(planet); // Renvoyer la planète créée avec son id attribué par le serveur
+});
+
+// Mettre à jour une planète
+app.put("/api/planets/:name", (req, res) => {
+  const planet = req.body;
+  const index = planets.findIndex((p) => p.name === req.params.name); // Trouver l'index de la planète à mettre à jour
+  if (index === -1) {
+    return res.status(404).json({ message: "Planet not found" });
+  }
+  planets[index] = planet; // Remplacer la planète par la nouvelle
+  fs.writeFileSync(
+    "planets.json",
+    JSON.stringify({ planets: planets }, null, 2)
+  );
+  res.json(planet);
+});
+
+// Supprimer une planète
+app.delete("/api/planets/:name", (req, res) => {
+  // prendre le nom en entrée de la requete
+  const name = req.params.name;
+  // trouver l'index de la planète à supprimer
+  const index = planets.findIndex((p) => p.name === name);
+  // si l'index est -1, la planète n'existe pas
+  if (index === -1) {
+    return res.status(404).json({ message: "Planet not found" });
+  }
+  // supprimer la planète
+  planets.splice(index, 1);
+  // écrire le fichier planets.json
+  fs.writeFileSync(
+    "planets.json",
+    JSON.stringify({ planets: planets }, null, 2)
+  );
+  res.json({ message: "Planet deleted" });
+});
+
+////////////////////// Gestion serveur //////////////////////
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
