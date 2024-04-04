@@ -46,6 +46,20 @@ app.get("/api/planets/:name", (req, res) => {
   res.json(planet);
 });
 
+// Il faut mettre le middleware avant les routes qui en ont besoin et après les routes get pour ne pas bloquer les requêtes
+///// MIDDLEWARE pour vérifier que toutes les planètes ont un nom, un diamètre et une distance du soleil
+// Le middleware s'exécute pour toutes les routes qui ont le préfixe /api/planets et donc retourne erreur si les champs ne sont pas remplis
+app.use((req, res, next) => {
+  const planet = req.body;
+  if (!planet.name || !planet.diameter || !planet.distanceFromSun) {
+    res
+      .status(400)
+      .json({ message: "Erreur, il manque un paramètre dans le body" });
+  } else {
+    next();
+  }
+});
+
 // Poster une nouvelle planète
 app.post("/api/planets", (req, res) => {
   const planet = req.body;
